@@ -9,9 +9,9 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-
+    var notes: [NoteType] { get }
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
-
+    var notes: [NoteType] = NoteType.allCases
 }
