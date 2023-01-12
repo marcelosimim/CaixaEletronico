@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = customView as? UIView
+        customView.delegate = self
         customView.notesCollectionView.delegate = self
         customView.notesCollectionView.dataSource = self
     }
@@ -27,7 +28,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewDelegate {
     func didTapWithDraw(_ value: String) {
-
+        guard let intValue = Int(value) else { return }
+        navigationController?.pushViewController(LoadingViewController(value: intValue), animated: true)
     }
 }
 
