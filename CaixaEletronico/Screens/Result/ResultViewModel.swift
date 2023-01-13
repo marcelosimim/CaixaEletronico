@@ -23,38 +23,66 @@ final class ResultViewModel: ResultViewModelProtocol {
     var didFinishWithDrawFailure: ((String, String) -> ()) = { _, _ in }
     var notes: [NoteType] = []
     private var notesForWithDraw: [Int] = []
-    private var possibilities: [Int] = []
+    private var availableNotes: [Int] = []
 
     init() {
-        fillPossitilities()
+        fillAvailableNotes()
     }
 
     func calculateNotes(_ value: Int) {
-        var notesToTry = possibilities
+        let numberSplitted = separateUnits(value)
+        var quantityOfNotes: [Int] = Array(repeating: 0, count: availableNotes.count)
 
-        notesForWithDraw = getNotes(value, noteToTry: notesToTry[0])
+        for digit in numberSplitted {
+            var notesToTry = availableNotes
+            notesForWithDraw = getNotes(digit, noteToTry: notesToTry[0])
 
-        if isWithDrawCompleted(value) {
-            finishWithDraw()
-            startCounting()
-            return
+            if isWithDrawCompleted(digit) {
+                quantityOfNotes = addNotes(currentNotes: quantityOfNotes, notesToBeAdded: notesForWithDraw)
+            } else {
+                notesToTry.remove(at: 0)
+                while hasNotesToTry(notesToTry) && !isWithDrawCompleted(digit) {
+                    notesForWithDraw = getNotes(digit, noteToTry: notesToTry[0])
+                    notesToTry.remove(at: 0)
+                }
+                quantityOfNotes = addNotes(currentNotes: quantityOfNotes, notesToBeAdded: notesForWithDraw)
+            }
         }
 
-        notesToTry.remove(at: 0)
-
-        while hasNotesToTry(notesToTry) && !isWithDrawCompleted(value) {
-            notesForWithDraw = getNotes(value, noteToTry: notesToTry[0])
-            notesToTry.remove(at: 0)
-        }
-
+        notesForWithDraw = quantityOfNotes
         isWithDrawCompleted(value) ? finishWithDraw() : didFinishWithDrawFailure("Saque impossível.", "As notas disponíveis não são suficientes para o saque solicitado.")
         startCounting()
+    }
+
+    private func separateUnits(_ value: Int) -> [Int] {
+        let stringValue = "\(value)"
+        var numberOfDigits = stringValue.count-1
+        var numberSplitted: [Int] = []
+
+        stringValue.forEach { char in
+            guard let number = Int("\(char)") else { return }
+            numberSplitted.append(number*Int(pow(Double(10), Double(numberOfDigits))))
+            numberOfDigits -= 1
+        }
+
+        return numberSplitted
+    }
+
+    private func addNotes(currentNotes: [Int], notesToBeAdded: [Int]) -> [Int] {
+        var finalNotes: [Int] = Array(repeating: 0, count: notesToBeAdded.count)
+
+        for i in 0...notesToBeAdded.count-1 {
+            finalNotes[i] = currentNotes[i] + notesToBeAdded[i]
+        }
+
+        return finalNotes
     }
 
     private func getNotes(_ value: Int, noteToTry: Int) -> [Int] {
         var needValue = value
         var notesToReturn: [Int] = []
-        possibilities.forEach { currentNote in
+
+        availableNotes.forEach { currentNote in
             if currentNote <= noteToTry {
                 let numberOfNotes = divideByX(value: needValue, x: currentNote)
                 notesToReturn.append(numberOfNotes)
@@ -77,8 +105,8 @@ final class ResultViewModel: ResultViewModelProtocol {
 
     private func isWithDrawCompleted(_ value: Int) -> Bool {
         var withDraw = 0
-        for i in 0...possibilities.count-1 {
-            withDraw += (possibilities[i] * notesForWithDraw[i])
+        for i in 0...availableNotes.count-1 {
+            withDraw += (availableNotes[i] * notesForWithDraw[i])
         }
 
         return withDraw == value
@@ -93,21 +121,22 @@ final class ResultViewModel: ResultViewModelProtocol {
     }
 
     private func finishWithDraw() {
-        for i in 0...possibilities.count-1 {
-            guard let note = NoteType(rawValue: possibilities[i]) else { return }
+        for i in 0...availableNotes.count-1 {
+            guard let note = NoteType(rawValue: availableNotes[i]) else { return }
             for _ in 0..<notesForWithDraw[i] {
                 notes.append(note)
             }
         }
+     
         didFinishWithDrawSuccess()
     }
 
-    private func fillPossitilities() {
+    private func fillAvailableNotes() {
         let allCases = NoteType.allCases
         allCases.forEach { note in
-            possibilities.append(note.rawValue)
+            availableNotes.append(note.rawValue)
         }
-        possibilities.sort { $0 > $1 }
+        availableNotes.sort { $0 > $1 }
     }
 
     private func startCounting() {
