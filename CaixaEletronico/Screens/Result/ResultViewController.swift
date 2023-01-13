@@ -24,7 +24,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Saque para R$\(value) reais"
+        title = "Saque para R$\(value)"
         setupNavigationBar()
         viewModelBinds()
         viewModel.calculateNotes(value)

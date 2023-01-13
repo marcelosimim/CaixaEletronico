@@ -17,6 +17,8 @@ protocol HomeViewDelegate: AnyObject {
 protocol HomeViewProtocol {
     var delegate: HomeViewDelegate? { get set }
     var notesCollectionView: UICollectionView { get set }
+
+    func clean()
 }
 
 final class HomeView: UIView, HomeViewProtocol {
@@ -102,5 +104,9 @@ final class HomeView: UIView, HomeViewProtocol {
     @objc private func didTapWithDraw() {
         guard let text = inputTextField.text else { return }
         delegate?.didTapWithDraw(text)
+    }
+
+    func clean() {
+        inputTextField.text = ""
     }
 }

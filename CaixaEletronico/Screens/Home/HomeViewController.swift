@@ -17,6 +17,11 @@ class HomeViewController: UIViewController {
         title = "Caixa eletrônico"
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customView.clean()
+    }
+
     override func loadView() {
         super.loadView()
         view = customView as? UIView
