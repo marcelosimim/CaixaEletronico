@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-enum NoteType: CaseIterable {
-    case two
-    case five
-    case ten
-    case fifty
+enum NoteType: Int, CaseIterable {
+    case two = 2
+    case five = 5
+    case ten = 10
+    case fifty = 50
 
     var image: UIImage {
         switch self {

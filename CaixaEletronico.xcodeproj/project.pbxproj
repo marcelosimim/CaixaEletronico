@@ -95,7 +95,6 @@
 				A3F9C871297074AE008ADF22 /* Components */,
 				A3F9C877297075B8008ADF22 /* Enum */,
 				A3F9C86529707099008ADF22 /* Screens */,
-				A3F9C874297074FF008ADF22 /* Model */,
 				A3F9C8642970700E008ADF22 /* Resources */,
 				A3F9C86D29707260008ADF22 /* Utils */,
 				A3F9C85D29706FE6008ADF22 /* Info.plist */,
@@ -163,13 +162,6 @@
 				A3F9C872297074F3008ADF22 /* NoteCollectionViewCell.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		A3F9C874297074FF008ADF22 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A3F9C877297075B8008ADF22 /* Enum */ = {
