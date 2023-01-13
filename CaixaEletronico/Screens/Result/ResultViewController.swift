@@ -42,12 +42,13 @@ class ResultViewController: UIViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }
 
-        viewModel.didFinishWithDrawSuccess = {
-            self.customView.notesCollectionView.reloadData()
+        viewModel.didFinishWithDrawSuccess = { [weak self] in
+            self?.customView.notesCollectionView.reloadData()
         }
 
-        viewModel.didFinishWithDrawFailure = { title, message in
-            print(title, message)
+        viewModel.didFinishWithDrawFailure = { [weak self] title, message in
+            guard let self else { return }
+            UIAlertController.basicAlert(viewController: self, title: title, message: message)
         }
     }
 

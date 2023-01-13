@@ -13,5 +13,5 @@ protocol HomeViewModelProtocol {
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
-    var notes: [NoteType] = NoteType.allCases
+    var notes: [NoteType] = NoteType.allCases.reversed()
 }

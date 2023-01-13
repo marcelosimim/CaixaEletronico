@@ -24,6 +24,7 @@
 		A3F9C88829709FD7008ADF22 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C88529709FD7008ADF22 /* ResultViewController.swift */; };
 		A3F9C88929709FD7008ADF22 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C88629709FD7008ADF22 /* ResultView.swift */; };
 		A3F9C88A29709FD7008ADF22 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C88729709FD7008ADF22 /* ResultViewModel.swift */; };
+		A3F9C88E2971966D008ADF22 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C88D2971966D008ADF22 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		A3F9C88529709FD7008ADF22 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A3F9C88629709FD7008ADF22 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		A3F9C88729709FD7008ADF22 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		A3F9C88D2971966D008ADF22 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E140CE15B5DA19CDBF9234AC /* Pods_CaixaEletronico.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaixaEletronico.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F9C86F2970726F008ADF22 /* UIImage.swift */,
+				A3F9C88D2971966D008ADF22 /* Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				A3F9C88029709A43008ADF22 /* LoadingViewModel.swift in Sources */,
 				A3F9C88A29709FD7008ADF22 /* ResultViewModel.swift in Sources */,
 				A3F9C85029706FE4008ADF22 /* AppDelegate.swift in Sources */,
+				A3F9C88E2971966D008ADF22 /* Alert.swift in Sources */,
 				A3F9C86A297070D1008ADF22 /* HomeView.swift in Sources */,
 				A3F9C85229706FE4008ADF22 /* SceneDelegate.swift in Sources */,
 				A3F9C87F29709A43008ADF22 /* LoadingView.swift in Sources */,

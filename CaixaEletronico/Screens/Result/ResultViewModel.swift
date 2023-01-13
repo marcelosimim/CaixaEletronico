@@ -36,6 +36,7 @@ final class ResultViewModel: ResultViewModelProtocol {
 
         if isWithDrawCompleted(value) {
             finishWithDraw()
+            startCounting()
             return
         }
 
@@ -47,6 +48,7 @@ final class ResultViewModel: ResultViewModelProtocol {
         }
 
         isWithDrawCompleted(value) ? finishWithDraw() : didFinishWithDrawFailure("Saque impossível.", "As notas disponíveis não são suficientes para o saque solicitado.")
+        startCounting()
     }
 
     private func getNotes(_ value: Int, noteToTry: Int) -> [Int] {
@@ -98,7 +100,6 @@ final class ResultViewModel: ResultViewModelProtocol {
             }
         }
         didFinishWithDrawSuccess()
-        startCounting()
     }
 
     private func fillPossitilities() {
