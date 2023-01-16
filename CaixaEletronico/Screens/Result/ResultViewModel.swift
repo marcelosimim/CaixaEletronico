@@ -121,13 +121,39 @@ final class ResultViewModel: ResultViewModelProtocol {
     }
 
     private func finishWithDraw() {
+        if isAvailableOnTellerMachine(notes: notesForWithDraw) {
+            showNotes()
+            getFromTellerMachine(notes: notesForWithDraw)
+        } else {
+            didFinishWithDrawFailure("Saque impossível.", "As notas disponíveis não são suficientes para o saque solicitado.")
+        }
+    }
+
+    func isAvailableOnTellerMachine(notes: [Int]) -> Bool {
+        for i in 0...notes.count-1 {
+            if notes[i] > TellerMachine.availableNotes[i].quantity {
+                return false
+            }
+        }
+        return true
+    }
+
+    private func showNotes() {
         for i in 0...availableNotes.count-1 {
             guard let note = NoteType(rawValue: availableNotes[i]) else { return }
             for _ in 0..<notesForWithDraw[i] {
                 notes.append(note)
             }
         }
-     
+    }
+
+    private func getFromTellerMachine(notes: [Int]) {
+        for i in 0...notes.count-1 {
+            print(TellerMachine.availableNotes[i].quantity, notes[i])
+            TellerMachine.availableNotes[i].quantity -= notes[i]
+
+        }
+
         didFinishWithDrawSuccess()
     }
 

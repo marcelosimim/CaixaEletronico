@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		756C60D56EBFBEAB760C5D45 /* Pods_CaixaEletronico.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E140CE15B5DA19CDBF9234AC /* Pods_CaixaEletronico.framework */; };
+		A378D5DF2975E1EE0067364F /* AvailableNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378D5DE2975E1EE0067364F /* AvailableNotes.swift */; };
+		A378D5E12975E3320067364F /* TellerMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378D5E02975E3320067364F /* TellerMachine.swift */; };
 		A3F9C85029706FE4008ADF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C84F29706FE4008ADF22 /* AppDelegate.swift */; };
 		A3F9C85229706FE4008ADF22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9C85129706FE4008ADF22 /* SceneDelegate.swift */; };
 		A3F9C85929706FE6008ADF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3F9C85829706FE6008ADF22 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		357F30DF89CD9124CA1B9FE5 /* Pods-CaixaEletronico.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaixaEletronico.release.xcconfig"; path = "Target Support Files/Pods-CaixaEletronico/Pods-CaixaEletronico.release.xcconfig"; sourceTree = "<group>"; };
 		99739E22967A6554230C438B /* Pods-CaixaEletronico.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaixaEletronico.debug.xcconfig"; path = "Target Support Files/Pods-CaixaEletronico/Pods-CaixaEletronico.debug.xcconfig"; sourceTree = "<group>"; };
+		A378D5DE2975E1EE0067364F /* AvailableNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableNotes.swift; sourceTree = "<group>"; };
+		A378D5E02975E3320067364F /* TellerMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellerMachine.swift; sourceTree = "<group>"; };
 		A3F9C84C29706FE4008ADF22 /* CaixaEletronico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaixaEletronico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F9C84F29706FE4008ADF22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F9C85129706FE4008ADF22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A378D5DD2975E1DF0067364F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A378D5DE2975E1EE0067364F /* AvailableNotes.swift */,
+				A378D5E02975E3320067364F /* TellerMachine.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A3F9C84329706FE4008ADF22 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 				A3F9C86329706FFF008ADF22 /* AppDelegate */,
 				A3F9C871297074AE008ADF22 /* Components */,
 				A3F9C877297075B8008ADF22 /* Enum */,
+				A378D5DD2975E1DF0067364F /* Models */,
 				A3F9C86529707099008ADF22 /* Screens */,
 				A3F9C8642970700E008ADF22 /* Resources */,
 				A3F9C86D29707260008ADF22 /* Utils */,
@@ -327,9 +341,11 @@
 				A3F9C87F29709A43008ADF22 /* LoadingView.swift in Sources */,
 				A3F9C8702970726F008ADF22 /* UIImage.swift in Sources */,
 				A3F9C86B297070D1008ADF22 /* HomeViewModel.swift in Sources */,
+				A378D5DF2975E1EE0067364F /* AvailableNotes.swift in Sources */,
 				A3F9C88929709FD7008ADF22 /* ResultView.swift in Sources */,
 				A3F9C87E29709A43008ADF22 /* LoadingViewController.swift in Sources */,
 				A3F9C869297070D1008ADF22 /* HomeViewController.swift in Sources */,
+				A378D5E12975E3320067364F /* TellerMachine.swift in Sources */,
 				A3F9C879297075CF008ADF22 /* NoteType.swift in Sources */,
 				A3F9C873297074F3008ADF22 /* NoteCollectionViewCell.swift in Sources */,
 				A3F9C88829709FD7008ADF22 /* ResultViewController.swift in Sources */,
