@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum NoteType: Int, CaseIterable {
+
     case two = 2
     case five = 5
     case ten = 10

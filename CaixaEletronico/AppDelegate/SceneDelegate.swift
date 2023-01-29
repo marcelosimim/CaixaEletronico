@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.pushViewController(HomeViewController(), animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+
+        TellerMachine.fillTellerMachine()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
