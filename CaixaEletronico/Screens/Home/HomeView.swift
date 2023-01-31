@@ -37,7 +37,7 @@ final class HomeView: UIView, HomeViewProtocol {
 
     lazy var notesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 75)
+        layout.itemSize = CGSize(width: 150, height: 100)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: NoteCollectionViewCell.identifier)
@@ -89,7 +89,7 @@ final class HomeView: UIView, HomeViewProtocol {
             notesCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 32),
             notesCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             notesCollectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            notesCollectionView.bottomAnchor.constraint(equalTo: inputTextField.topAnchor, constant: -32),
+            notesCollectionView.bottomAnchor.constraint(equalTo: inputTextField.topAnchor, constant: -16),
 
             inputTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
             inputTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 64),

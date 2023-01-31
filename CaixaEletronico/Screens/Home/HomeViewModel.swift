@@ -9,9 +9,24 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-    var notes: [NoteType] { get }
+    var didFinishCheckingNotes: (() -> ()) { get set }
+    var notes: [AvailableNotes] { get }
+
+    func checkAvailableNotes()
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
-    var notes: [NoteType] = NoteType.allCases.reversed()
+    var didFinishCheckingNotes: (() -> ()) = { }
+    var notes: [AvailableNotes] = []
+
+    func checkAvailableNotes() {
+        notes = []
+        for availableNote in TellerMachine.availableNotes {
+            if availableNote.quantity > 0 {
+                notes.append(availableNote)
+            }
+        }
+
+        didFinishCheckingNotes()
+    }
 }

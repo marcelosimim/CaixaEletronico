@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     private lazy var customView: HomeViewProtocol = HomeView()
     private lazy var viewModel: HomeViewModelProtocol = HomeViewModel()
+    private var timerForShowScrollIndicator: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,14 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customView.clean()
+        viewModelBinds()
+        viewModel.checkAvailableNotes()
+        startTimerForShowScrollIndicator()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timerForShowScrollIndicator?.invalidate()
     }
 
     override func loadView() {
@@ -28,6 +37,22 @@ class HomeViewController: UIViewController {
         customView.delegate = self
         customView.notesCollectionView.delegate = self
         customView.notesCollectionView.dataSource = self
+    }
+
+    private func viewModelBinds() {
+        viewModel.didFinishCheckingNotes = { [weak self] in
+            self?.customView.notesCollectionView.reloadData()
+        }
+    }
+
+    private func startTimerForShowScrollIndicator() {
+       timerForShowScrollIndicator = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.showScrollIndicatorsInCollectionView), userInfo: nil, repeats: true)
+    }
+
+    @objc func showScrollIndicatorsInCollectionView() {
+       UIView.animate(withDuration: 0.0001) { [weak self] in
+           self?.customView.notesCollectionView.flashScrollIndicators()
+       }
     }
 }
 
